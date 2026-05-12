@@ -24,38 +24,69 @@ const passwordInput = document.getElementById("txtPassword");
 
 const boton = document.getElementById("btnLogin");
 
+const usuarioMostrar = document.getElementById("divUsuario");
+
+const resultado = document.getElementById("divResultado");
+
+const array = document.getElementById("divArray");
+
+const gastos = ["Gasolina","Comida","Internet"];
+
+let contenido = "";
+
+for (let i = 0; i < gastos.length; i++){
+
+    //'${}' esto se llama template literals 
+    contenido += `<p>${gastos[i]}</p>`;
+
+}
+
+array.innerHTML = contenido;
+
+
+
 boton.addEventListener("click",function () {
     // trim() elimina espacios adelante y atras
 
   
 
     let usuario = usuarioInput.value.trim();
+    let password = passwordInput.value.trim();
 
     if(usuario !== ""){
     console.log(usuario);
    
     } else {
-        console.log("Usuario requerido");
-
+        resultado.innerHTML ="<p>Usuario requerido</p>";
     }
 
-    let password = passwordInput.value.trim();
+   
 
     if(password !== ""){
         console.log(password);
         
     } else {
-        console.log("Contraseña requerida");}
+        resultado.innerHTML ="<p>Contraseña requerida</p>";
+       }
     
         // no es necesario poner == true por que estas son booleanas
     if(usuario !== "" && password !== "")
-      {console.log("Login exitoso");
+      {  resultado.innerHTML ="<p>Login exitoso</p>";
+        usuarioMostrar.innerHTML = `<p>${usuario}</p>`;
+        usuarioInput.value = "";
+        passwordInput.value = "";
 
       }else{
-        console.log("Debes completar ambos campos")
+        resultado.innerHTML ="<p>Debe completar ambos campos</p>";
       }
 
  
 }
 
-);
+
+); // fin de funcion de la accion de boton 
+
+
+
+// esto cambia contenido html dinamicamente (texto, html completo y etiquetas)
+//  resultado.innerHTML = "<h2>Hola Heriberto</h2>";
